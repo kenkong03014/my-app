@@ -1,0 +1,15 @@
+.banner {
+    background: #05284a;
+    height: 2rem;
+    display: flex;
+    padding: 5px;
+}
+
+.ProdcutPage__Content {
+    display: flex;
+    flex-direction: row;
+    padding: 25px;
+    justify-content: space-between;
+    min-height: calc(100vh - 100px);
+    gap: 30px;
+}
