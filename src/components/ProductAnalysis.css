@@ -1,9 +1,15 @@
 .ProdAlysis__Container {
     box-shadow: 2px 2px 5px 0px #888888;
-    min-width: 90%;
+    width: 100%;
     border-radius: 4px;
     font-size: 14px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
+
+.ProdAlysis__Chart,
+.ProdAlysis__Table {
+    padding: 20px 40px;
+}
+

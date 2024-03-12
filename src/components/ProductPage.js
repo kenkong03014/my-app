@@ -406,17 +406,17 @@ function ProductPage() {
         ]
       }
     ])
-  }, []);
+  }, []); // eslint-disable-line
 
   return (
-    <div>
-        <div className='banner'>
-            <StacklineIcon width={50} />
-        </div>
-        <div className="ProdcutPage__Content">
-            <ProductDescription description={productData === null ? null : productData[0]}/>
-            <ProductAnalysis analysis={productData === null ? null : productData[0]}/>
-        </div>
+    <div className="ProductPageContainer">
+      <div className='banner'>
+        <StacklineIcon width={50} />
+      </div>
+      <div className="ProdcutPage__Content">
+        <ProductDescription description={productData === null ? null : productData[0]}/>
+        <ProductAnalysis analysis={productData === null ? null : productData[0]}/>
+      </div>
     </div>
   )
 }

@@ -1,10 +1,11 @@
-import './App.css';
-import ProductPage from './components/ProductPage';
+import React from "react";
+import "./App.css";
+import ProductPage from "./components/ProductPage";
 function App() {
   return (
-    <>
-      <ProductPage />
-    </>
+    <div>
+      <ProductPage /> 
+    </div>
   );
 }
 
