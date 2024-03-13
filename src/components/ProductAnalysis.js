@@ -11,7 +11,7 @@ function ProductAnalysis({
       title: "Retail Sales"
     },
     width: 900,
-    height: 300,
+    height: "auto",
   };
   const tableOptions = {
     width: 900,
@@ -29,46 +29,50 @@ function ProductAnalysis({
   useEffect(() => {
     const c_data = [];
     const t_data = [];
-    analysis?.sales?.forEach(
-      (item, idx) => {
-        if (idx === 0) {
+    if (analysis) {
+      analysis?.sales?.forEach(
+        (item, idx) => {
+          // Add the x-axis values to the chart
+          if (idx === 0) {
+            c_data.push([
+              { type: "date" },
+              "Retail Sales",
+            ]);
+            t_data.push([
+              "WEEK ENDING",
+              "RETAIL SALES",
+              "WHLESALE SALES",
+              "UNITS SOLD",
+              "RETAILER MARGIN",
+            ])
+          }
+          
+          // Add data points to the line chart and the table
+          const {
+            weekEnding,
+            retailSales,
+            wholesaleSales,
+            unitsSold,
+            retailerMargin,
+          } = item;
+          const dateInfo = weekEnding.split("-");
+          const year = dateInfo[0];
+          const month = dateInfo[1];
+          const date = dateInfo[2];
           c_data.push([
-            { type: "date" },
-            "Retail Sales",
+            new Date(year, month - 1, date),
+            retailSales,
           ]);
           t_data.push([
-            "WEEK ENDING",
-            "RETAIL SALES",
-            "WHLESALE SALES",
-            "UNITS SOLD",
-            "RETAILER MARGIN",
+            `${month}-${date}-${year}`,
+            retailSales,
+            wholesaleSales,
+            unitsSold,
+            retailerMargin,
           ])
-        }
-
-        const {
-          weekEnding,
-          retailSales,
-          wholesaleSales,
-          unitsSold,
-          retailerMargin,
-        } = item;
-        const dateInfo = weekEnding.split("-");
-        const year = dateInfo[0];
-        const month = dateInfo[1];
-        const date = dateInfo[2];
-        c_data.push([
-          new Date(year, month - 1, date),
-          retailSales,
-        ]);
-        t_data.push([
-          `${month}-${date}-${year}`,
-          retailSales,
-          wholesaleSales,
-          unitsSold,
-          retailerMargin,
-        ])
-      },
-    );
+        },
+      );
+    }
     setChartData(c_data);
     setTableData(t_data);
   }, [analysis]); // eslint-disable-line
